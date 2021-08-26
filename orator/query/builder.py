@@ -1554,10 +1554,12 @@ class QueryBuilder(object):
                 if not isinstance(value, pendulum.Date):
                     if isinstance(value, datetime.datetime):
                         value = pendulum.instance(value)
+                        value = value.format(self._grammar.get_date_format())
                     else:
                         value = pendulum.date(value.year, value.month, value.day)
-
-                value = value.format(self._grammar.get_date_format())
+                        value = value.format(self._grammar.get_date_format_without_time())
+                else:
+                    value = value.format(self._grammar.get_date_format())
 
             bindings.append(value)
 

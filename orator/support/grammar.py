@@ -80,6 +80,9 @@ class Grammar(object):
     def get_date_format(self):
         return "YYYY-MM-DD HH:mm:ss.SSSSSS"
 
+    def get_date_format_without_time(self):
+        return "YYYY-MM-DD"
+
     def get_table_prefix(self):
         return self._table_prefix
 
